@@ -25,10 +25,13 @@ const navObj = {
 const navObserver = new IntersectionObserver(entries => {
   entries.forEach((entry) => {
     navListItem[navObj[entry.target.id]].classList.toggle('md:after:bg-green-500', entry.isIntersecting);
+    navListItem[navObj[entry.target.id]].classList.toggle('bg-green-500', entry.isIntersecting);
   })
 }, {
-  threshold: 0.5
-})
+  threshold: .5,
+  rootMargin: '10px'
+
+});
 
 const intersectingItems = document.querySelectorAll('.intersecting-class');
 intersectingItems.forEach(el => navObserver.observe(el))
